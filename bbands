@@ -7,6 +7,7 @@ bbands(int length, int mult) =>
     [basis, basis + dev, basis - dev]
 
 [middle1, upper1, lower1] = bbands(14, 1)
+rsi1 = ta.rsi(close, 14)
 if rsi1 > 0 and rsi1 < 10
     [middle1, upper1, lower1] := bbands(14, 2)
 else if rsi1 > 10 and rsi1 < 20
