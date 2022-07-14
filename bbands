@@ -1,0 +1,19 @@
+//@version=5
+indicator("My script")
+
+bbands(int length, int mult) =>
+    float basis = ta.sma(close, length)
+    float dev = mult * ta.stdev(close, length)
+    [basis, basis + dev, basis - dev]
+
+[middle1, upper1, lower1] = bbands(14, 1)
+if rsi1 > 0 and rsi1 < 10
+    [middle1, upper1, lower1] := bbands(14, 2)
+else if rsi1 > 10 and rsi1 < 20
+    [middle1, upper1, lower1] := bbands(14, 3)
+else if rsi1 > 20 and rsi1 < 30
+    [middle1, upper1, lower1] := bbands(14, 4)
+
+plot(middle1)
+plot(upper1)
+plot(lower1)
